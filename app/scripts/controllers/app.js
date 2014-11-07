@@ -8,5 +8,10 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('AppCtrl', function ($scope) {
+    .controller('AppCtrl', function ($scope, Settings) {
+
+
+
+
+
     });

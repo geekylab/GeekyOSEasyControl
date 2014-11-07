@@ -5,7 +5,7 @@ angular.module('clientApp')
             link: function (scope, element) {
                 var headerAndFooter = 103;
                 scope.initializeWindowSize = function () {
-                    $(element).css('min-height', $window.innerHeight - headerAndFooter);
+                    element.css('min-height', $window.innerHeight - headerAndFooter);
                 };
                 scope.initializeWindowSize();
                 angular.element($window).bind('resize', function () {

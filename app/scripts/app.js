@@ -32,10 +32,10 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            //.when('/login', {
-            //    templateUrl: 'views/login.html',
-            //    controller: 'LoginCtrl'
-            //})
+            .when('/extensions', {
+                templateUrl: 'views/extensions.html',
+                controller: 'ExtensionsCtrl'
+            })
             .when('/order', {
                 templateUrl: 'views/order.html',
                 controller: 'OrderCtrl'

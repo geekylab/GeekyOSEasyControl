@@ -16,35 +16,40 @@ angular.module('clientApp')
                 icon: "icon-home"
             },
             {
-                name: "Order",
-                href: "/order",
-                icon: "icon-basket"
-            },
-            {
-                name: "Customer",
-                href: "/customer",
-                icon: "icon-users"
-            },
-            {
-                name: "Item",
-                href: "/item",
-                icon: "icon-cup"
-            },
-            {
-                name: "Category",
-                href: "/category",
-                icon: "icon-docs"
-            },
-            //{
-            //    name: "Table",
-            //    href: "/table",
-            //    icon: "icon-screen-tablet"
-            //},
-            {
-                name: "Store",
-                href: "/store",
-                icon: "icon-basket"
+                name: "Extensions",
+                href: "/extensions",
+                icon: "icon-home"
             }
+            //{
+            //    name: "Order",
+            //    href: "/order",
+            //    icon: "icon-basket"
+            //},
+            //{
+            //    name: "Customer",
+            //    href: "/customer",
+            //    icon: "icon-users"
+            //},
+            //{
+            //    name: "Item",
+            //    href: "/item",
+            //    icon: "icon-cup"
+            //},
+            //{
+            //    name: "Category",
+            //    href: "/category",
+            //    icon: "icon-docs"
+            //},
+            ////{
+            ////    name: "Table",
+            ////    href: "/table",
+            ////    icon: "icon-screen-tablet"
+            ////},
+            //{
+            //    name: "Store",
+            //    href: "/store",
+            //    icon: "icon-basket"
+            //}
         ];
 
 
