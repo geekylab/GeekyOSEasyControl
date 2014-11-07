@@ -1,0 +1,298 @@
+<!doctype html>
+<html ng-app="clientApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/select2/select2.css"/>
+    <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
+    <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/global/components.css">
+    <link rel="stylesheet" href="styles/global/plugins.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/themes/blue.css">
+    <!-- endbuild -->
+</head>
+<body class="page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo ng-scope page-header-fixed page-sidebar-fixed"
+        ng-controller="AppCtrl">
+<!-- BEGIN HEADER -->
+<div class="page-header navbar navbar-fixed-top" ng-controller="ToolbarCtrl">
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner">
+<!-- BEGIN LOGO -->
+<div class="page-logo" ng-class="isConn()">
+    <a href="#/" style="height: 68px;display:block;vertical-align:middle;">
+        Geeky Menu
+    </a>
+
+    <div class="menu-toggler sidebar-toggler">
+        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+    </div>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+</a>
+<!-- END RESPONSIVE MENU TOGGLER -->
+<!-- BEGIN PAGE ACTIONS -->
+<!-- DOC: Remove "hide" class to enable the page header actions -->
+<div class="page-actions hide">
+    <div class="btn-group">
+        <button type="button" class="btn btn-circle red-pink dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-bar-chart"></i>&nbsp;<span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;<i
+                class="fa fa-angle-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">
+                    <i class="icon-user"></i> New User </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-basket"></i> New order </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-circle green-haze dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-bell"></i>&nbsp;<span class="hidden-sm hidden-xs">Post&nbsp;</span>&nbsp;<i
+                class="fa fa-angle-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">
+                    <i class="icon-docs"></i> New Post </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-tag"></i> New Comment </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-share"></i> Share </a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- END PAGE ACTIONS -->
+<!-- BEGIN PAGE TOP -->
+<div class="page-top">
+    <div class="top-menu">
+        <ul class="nav navbar-nav pull-right">
+            <li class="dropdown dropdown-language">
+                <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle"
+                   href="#">
+                    <img ng-src="/app/images/flags/{{languages.selected.flag}}.png" alt="">
+                    <span class="langname">{{languages.selected.code}}</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li ng-hide="languages.selected.code == lng.code" ng-repeat="lng in languages.lang">
+                        <a href="javascript:;" ng-click="changeLang(lng.code)"> <img
+                                ng-src="/app/images/flags/{{lng.flag}}.png" alt=""> {{lng.label}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- BEGIN USER LOGIN DROPDOWN -->
+            <li class="dropdown dropdown-user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
+                    <img alt="" class="img-circle" src="/images/avatar4.jpg"/><span
+                        class="username username-hide-on-mobile">{{me.email}}</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/profile">
+                            <i class="icon-user"></i> My Profile </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="/logout"><i class="icon-key"></i> {{'Log Out'|translate}} </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+    </div>
+    <!-- END TOP NAVIGATION MENU -->
+</div>
+<!-- END PAGE TOP -->
+</div>
+<!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+
+
+<!-- Add your site or application content here -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar-wrapper" ng-include="'views/templates/sidebar.html'" ng-controller="SideBarCtrl"></div>
+    <!-- END SIDEBAR -->
+
+    <div class="page-content-wrapper">
+        <div class="page-content" full-height>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}
+            </alert>
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner">
+        2014 &copy; Metronic by keenthemes.
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+
+<!-- END FOOTER -->
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="bower_components/blockui/jquery.blockUI.js"></script>
+<script src="bower_components/jquery.uniform/jquery.uniform.js"></script>
+<script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+<script src="bower_components/select2/select2.js"></script>
+<script src="bower_components/angular-base64/angular-base64.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/angular-busy/dist/angular-busy.js"></script>
+<script src="bower_components/autotype/index.js"></script>
+<script src="bower_components/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="bower_components/jquery-backstretch/jquery.backstretch.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/main.js"></script>
+<script type="text/javascript" src="scripts/controllers/order.js"></script>
+<script type="text/javascript" src="scripts/controllers/login.js"></script>
+<script type="text/javascript" src="scripts/controllers/sidebar.js"></script>
+<script type="text/javascript" src="scripts/services/basicauth.js"></script>
+<script type="text/javascript" src="scripts/directives/datatable.js"></script>
+<script type="text/javascript" src="scripts/directives/checkboxupdate.js"></script>
+
+<script type="text/javascript" src="scripts/controllers/kitchen.js"></script>
+<script type="text/javascript" src="scripts/controllers/toolbar.js"></script>
+<script type="text/javascript" src="scripts/controllers/handy.js"></script>
+<script type="text/javascript" src="scripts/controllers/item.js"></script>
+<script type="text/javascript" src="scripts/controllers/itemedit.js"></script>
+<script src="scripts/controllers/category.js"></script>
+<script src="scripts/controllers/categoryedit.js"></script>
+<script src="scripts/controllers/table.js"></script>
+<script src="scripts/controllers/tableedit.js"></script>
+<script src="scripts/controllers/customer.js"></script>
+<script src="scripts/controllers/store.js"></script>
+<script src="scripts/controllers/storeedit.js"></script>
+<script src="scripts/directives/applyuniform.js"></script>
+<script src="scripts/directives/table-status.js"></script>
+<script src="scripts/directives/jtimepicker.js"></script>
+<script src="scripts/directives/gridmultilangfield.js"></script>
+<script src="scripts/directives/supportlang.js"></script>
+<script src="scripts/directives/full-height.js"></script>
+<script src="scripts/directives/ngthumb.js"></script>
+<script type="text/javascript" src="scripts/services/items.js"></script>
+<script type="text/javascript" src="scripts/services/socket.js"></script>
+<script type="text/javascript" src="scripts/services/orders.js"></script>
+<script src="scripts/services/alertservice.js"></script>
+<script src="scripts/services/categories.js"></script>
+<script src="scripts/services/tables.js"></script>
+<script src="scripts/services/const-table-status.js"></script>
+<script src="scripts/services/customers.js"></script>
+<script src="scripts/services/store.js"></script>
+<script src="scripts/services/ingredients.js"></script>
+<!-- endbuild -->
+</body>
+</html>
