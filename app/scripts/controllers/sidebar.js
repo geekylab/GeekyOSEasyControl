@@ -15,11 +15,6 @@ angular.module('clientApp')
                 href: "/",
                 icon: "icon-home"
             },
-            {
-                name: "Extensions",
-                href: "/extensions",
-                icon: "icon-home"
-            }
             //{
             //    name: "Order",
             //    href: "/order",
@@ -45,11 +40,16 @@ angular.module('clientApp')
             ////    href: "/table",
             ////    icon: "icon-screen-tablet"
             ////},
-            //{
-            //    name: "Store",
-            //    href: "/store",
-            //    icon: "icon-basket"
-            //}
+            {
+                name: "Store",
+                href: "/store",
+                icon: "icon-basket"
+            },
+            {
+                name: "Extensions",
+                href: "/extensions",
+                icon: "icon-home"
+            }
         ];
 
 

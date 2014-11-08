@@ -8,8 +8,9 @@
  * Factory in the clientApp.
  */
 angular.module('clientApp')
-    .factory('Store', function ($resource) {
-        return $resource('/api/store/:id/:lang', {
+    .factory('Store', function ($resource, Settings) {
+        var url = Settings.API_HOST + '/api/store/:id/:lang';
+        return $resource(url, {
             id: '@_id',
             lang: '@lang'
         }, {

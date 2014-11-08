@@ -8,8 +8,9 @@
  * Factory in the clientApp.
  */
 angular.module('clientApp')
-    .factory('Ingredients', function ($resource) {
-        return $resource('/api/ingredients/:id', {id: '@_id', name: '@name', lang: '@lang'}, {
+    .factory('Ingredients', function ($resource, Settings) {
+        var url = Settings.API_HOST + '/api/ingredients/:id';
+        return $resource(url, {id: '@_id', name: '@name', lang: '@lang'}, {
             update: {
                 method: 'PUT',
                 params: {
