@@ -37,37 +37,37 @@ angular.module('clientApp')
         //    };
         //};
         //
-        //$scope.languages = {
-        //    selected: {},
-        //    lang: {
-        //        'en': {
-        //            flag: 'us',
-        //            code: 'en',
-        //            label: 'English'
-        //        },
-        //        'ja': {
-        //            flag: 'jp',
-        //            code: 'ja',
-        //            label: 'Japanese'
-        //        }
-        //    }
+        $scope.languages = {
+            selected: {},
+            lang: {
+                'en': {
+                    flag: 'us',
+                    code: 'en',
+                    label: 'English'
+                },
+                'ja': {
+                    flag: 'jp',
+                    code: 'ja',
+                    label: 'Japanese'
+                }
+            }
+
+        };
         //
-        //};
-        //
-        //var current = $translate.use();
-        //if ($scope.languages.lang[current] == undefined) {
-        //    $scope.languages.selected = $scope.languages.lang['en'];
-        //} else {
-        //    $scope.languages.selected = $scope.languages.lang[current];
-        //
-        //}
-        //
-        //$scope.changeLang = function (lng) {
-        //    if ($scope.languages.lang[lng] != undefined) {
-        //        $scope.languages.selected = $scope.languages.lang[lng];
-        //        $translate.use(lng.toLowerCase());
-        //    }
-        //}
+        var current = $translate.use();
+        if ($scope.languages.lang[current] == undefined) {
+            $scope.languages.selected = $scope.languages.lang['en'];
+        } else {
+            $scope.languages.selected = $scope.languages.lang[current];
+
+        }
+
+        $scope.changeLang = function (lng) {
+            if ($scope.languages.lang[lng] != undefined) {
+                $scope.languages.selected = $scope.languages.lang[lng];
+                $translate.use(lng.toLowerCase());
+            }
+        }
 
 
     });

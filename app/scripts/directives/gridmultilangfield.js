@@ -19,7 +19,7 @@ angular.module('clientApp')
                         element.text(value);
                     }
 
-                    langImages += '<img style="margin-left:4px" src="/app/images/flags/' + key + '.png" alt="" title="' + value + '" />';
+                    langImages += '<img style="margin-left:4px" src="images/flags/' + key + '.png" alt="" title="' + value + '" />';
                 });
                 element.append(langImages);
             }

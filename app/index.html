@@ -8,15 +8,15 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/select2/select2.css" />
-    <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css" />
-    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-    <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/select2/select2.css"/>
+    <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
+    <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -28,144 +28,140 @@
     <!-- endbuild -->
 </head>
 <body class="page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo ng-scope page-header-fixed page-sidebar-fixed"
-        ng-controller="AppCtrl">
+      ng-controller="AppCtrl">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top" ng-controller="ToolbarCtrl">
-<!-- BEGIN HEADER INNER -->
-<div class="page-header-inner">
-<!-- BEGIN LOGO -->
-<div class="page-logo" ng-class="isConn()">
-    <a href="#/" style="height: 68px;display:block;vertical-align:middle;">
-        Geeky Menu
-    </a>
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo" ng-class="isConn()">
+            <a href="#/" style="height: 68px;display:block;vertical-align:middle;">
+                Geeky Menu Easy Control
+            </a>
 
-    <div class="menu-toggler sidebar-toggler">
-        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-    </div>
-</div>
-<!-- END LOGO -->
-<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-</a>
-<!-- END RESPONSIVE MENU TOGGLER -->
-<!-- BEGIN PAGE ACTIONS -->
-<!-- DOC: Remove "hide" class to enable the page header actions -->
-<div class="page-actions hide">
-    <div class="btn-group">
-        <button type="button" class="btn btn-circle red-pink dropdown-toggle" data-toggle="dropdown">
-            <i class="icon-bar-chart"></i>&nbsp;<span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;<i
-                class="fa fa-angle-down"></i>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>
-                <a href="#">
-                    <i class="icon-user"></i> New User </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-basket"></i> New order </a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="btn-group">
-        <button type="button" class="btn btn-circle green-haze dropdown-toggle" data-toggle="dropdown">
-            <i class="icon-bell"></i>&nbsp;<span class="hidden-sm hidden-xs">Post&nbsp;</span>&nbsp;<i
-                class="fa fa-angle-down"></i>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>
-                <a href="#">
-                    <i class="icon-docs"></i> New Post </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-tag"></i> New Comment </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-share"></i> Share </a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<!-- END PAGE ACTIONS -->
-<!-- BEGIN PAGE TOP -->
-<div class="page-top">
-    <div class="top-menu">
-        <ul class="nav navbar-nav pull-right">
-            <li class="dropdown dropdown-language">
-                <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle"
-                   href="#">
-                    <img ng-src="/app/images/flags/{{languages.selected.flag}}.png" alt="">
-                    <span class="langname">{{languages.selected.code}}</span>
-                    <i class="fa fa-angle-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li ng-hide="languages.selected.code == lng.code" ng-repeat="lng in languages.lang">
-                        <a href="javascript:;" ng-click="changeLang(lng.code)"> <img
-                                ng-src="/app/images/flags/{{lng.flag}}.png" alt=""> {{lng.label}}
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+           data-target=".navbar-collapse">
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN PAGE ACTIONS -->
+        <!-- DOC: Remove "hide" class to enable the page header actions -->
+        <div class="page-actions hide">
+            <div class="btn-group">
+                <button type="button" class="btn btn-circle red-pink dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-bar-chart"></i>&nbsp;<span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;<i
+                        class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-user"></i> New User </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
                         </a>
                     </li>
-                </ul>
-            </li>
-
-            <!-- BEGIN USER LOGIN DROPDOWN -->
-            <li class="dropdown dropdown-user">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                   data-close-others="true">
-                    <img alt="" class="img-circle" src="/images/avatar4.jpg"/><span
-                        class="username username-hide-on-mobile">{{me.email}}</span>
-                    <i class="fa fa-angle-down"></i>
-                </a>
-                <ul class="dropdown-menu">
                     <li>
-                        <a href="/profile">
-                            <i class="icon-user"></i> My Profile </a>
+                        <a href="#">
+                            <i class="icon-basket"></i> New order </a>
                     </li>
                     <li class="divider">
                     </li>
                     <li>
-                        <a href="/logout"><i class="icon-key"></i> {{'Log Out'|translate}} </a>
+                        <a href="#">
+                            <i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
+                        </a>
                     </li>
                 </ul>
-            </li>
-            <!-- END USER LOGIN DROPDOWN -->
-        </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-circle green-haze dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-bell"></i>&nbsp;<span class="hidden-sm hidden-xs">Post&nbsp;</span>&nbsp;<i
+                        class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-docs"></i> New Post </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-tag"></i> New Comment </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-share"></i> Share </a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END PAGE ACTIONS -->
+        <!-- BEGIN PAGE TOP -->
+        <div class="page-top">
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-language">
+                        <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle"
+                           href="javascript:;">
+                            <img ng-src="images/flags/{{languages.selected.flag}}.png" alt="">
+                            <span class="langname">{{languages.selected.code}}</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-hide="languages.selected.code == lng.code" ng-repeat="lng in languages.lang">
+                                <a href="javascript:;" ng-click="changeLang(lng.code)">
+                                    <img ng-src="images/flags/{{lng.flag}}.png" alt=""> {{lng.label}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <img alt="" class="img-circle" src="images/avatar4.jpg"/><span
+                                class="username username-hide-on-mobile">{{me.email}}</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/profile">
+                                    <i class="icon-user"></i> My Profile </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="/logout"><i class="icon-key"></i> {{'Log Out'|translate}} </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <!-- END TOP NAVIGATION MENU -->
-</div>
-<!-- END PAGE TOP -->
-</div>
-<!-- END HEADER INNER -->
 </div>
 <!-- END HEADER -->
 <div class="clearfix">
