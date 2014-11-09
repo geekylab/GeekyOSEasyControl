@@ -203,7 +203,7 @@ angular.module('clientApp')
         angular.copy(defaultIngredients, $scope.selected.items);
 
         $scope.search = function () {
-            $scope.ingredients = Ingredients.query('/api/ingredients', {
+            $scope.ingredients = Ingredients.query({
                 lang: defaultLang,
                 name: $scope.query
             }, function (json) {

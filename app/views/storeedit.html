@@ -38,22 +38,9 @@
             <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
         </button>
 
-        <div class="btn-group">
-            <a class="btn yellow btn-circle" href="javascript:;" data-toggle="dropdown">
-                <i class="fa fa-share"></i> {{'More'|translate}} <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu pull-right">
-                <li>
-                    <a href="javascript:;">{{'Duplicate'|translate}}</a>
-                </li>
-                <li ng-class="{'disabled':!store._id || store._id == -1}">
-                    <a href="javascript:;" type="button" ng-click="delete()">
-                        <span class="label label-danger">
-                            {{'Delete'|translate}}</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <button type="button" class="btn red btn-circle" ng-click="delete()" ng-disabled="!store._id || store._id == -1">
+            <i class="fa fa-trash"></i> {{'Delete'|translate}}
+        </button>
 
         <support-lang></support-lang>
     </div>
@@ -63,11 +50,10 @@
 <div class="form-body">
 <div class="tabbable">
 <tabset>
-<tab heading="{{'General'|translate}}" active="true">
+<tab heading="{{'General'|translate}}">
     <div class="form-body">
         <div class="form-group" ng-class="{'has-error':form.store_name.$invalid}">
             <label>{{'Store Name'|translate}} <i class="fa fa-language" title="{{'Support translation'|translate}}"></i></label>
-
             <div class="input-icon">
                 <i class="fa fa-info-circle"></i>
                 <input type="text" placeholder="{{'Store Name'|translate}}"
@@ -119,7 +105,7 @@
 
                     <div class="input-icon" ng-class="{'has-error':form.stime.$invalid}">
                         <i class="fa fa-clock-o"></i>
-                        <input type="time" name="stime" placeholder="{{'Start'|translate}}"
+                        <input type="text" name="stime" placeholder="{{'Start'|translate}}"
                                class="form-control input-circle"
                                ng-model="store.opening_hour.start" jtimepicker>
                     </div>
@@ -130,7 +116,7 @@
 
                     <div class="input-icon" ng-class="{'has-error':form.etime.$invalid}">
                         <i class="fa fa-clock-o"></i>
-                        <input type="time" name="etime" placeholder="{{'End'|translate}}"
+                        <input type="text" name="etime" placeholder="{{'End'|translate}}"
                                class="form-control input-circle"
                                ng-model="store.opening_hour.end" jtimepicker>
                     </div>
@@ -141,7 +127,7 @@
 
                     <div class="input-icon" ng-class="{'has-error':form.etime.$invalid}">
                         <i class="fa fa-clock-o"></i>
-                        <input type="time" name="last_order" placeholder="{{'Last order'|translate}}"
+                        <input type="text" name="last_order" placeholder="{{'Last order'|translate}}"
                                class="form-control input-circle"
                                ng-model="store.opening_hour.last_order" jtimepicker>
                     </div>

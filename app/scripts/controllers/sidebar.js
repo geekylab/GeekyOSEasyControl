@@ -25,21 +25,16 @@ angular.module('clientApp')
             //    href: "/customer",
             //    icon: "icon-users"
             //},
-            //{
-            //    name: "Item",
-            //    href: "/item",
-            //    icon: "icon-cup"
-            //},
-            //{
-            //    name: "Category",
-            //    href: "/category",
-            //    icon: "icon-docs"
-            //},
-            ////{
-            ////    name: "Table",
-            ////    href: "/table",
-            ////    icon: "icon-screen-tablet"
-            ////},
+            {
+                name: "Category",
+                href: "/category",
+                icon: "icon-docs"
+            },
+            {
+                name: "Item",
+                href: "/item",
+                icon: "icon-cup"
+            },
             {
                 name: "Store",
                 href: "/store",
