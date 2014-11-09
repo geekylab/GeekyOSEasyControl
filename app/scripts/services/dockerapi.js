@@ -43,6 +43,10 @@ angular.module('clientApp')
             stopContainer: function (id, params) {
                 var path = '/containers/' + id + '/stop';
                 return this.postRequest(this.getApiUrl(path), params);
+            },
+            logsContainer: function (id, params) {
+                var path = '/containers/' + id + '/logs?stderr=1&stdout=1&timestamps=1&follow=0';
+                return this.getRequest(this.getApiUrl(path), params);
             }
         };
     });

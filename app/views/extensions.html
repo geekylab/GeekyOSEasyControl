@@ -104,6 +104,11 @@
                                                         ng-disabled="container.Status.indexOf('Up') === -1">
                                                     <i class="fa fa-stop"></i> {{'Stop'|translate}}
                                                 </button>
+                                                <button type="button" name="stop"
+                                                        class="btn btn-default btn-circle btn-sm"
+                                                        ng-click="logsContainer(container)">
+                                                    <i class="fa fa-stop"></i> {{'Logs'|translate}}
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>

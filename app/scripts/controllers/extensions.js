@@ -73,6 +73,17 @@ angular.module('clientApp')
                 });
         };
 
+        $scope.logsContainer = function (container) {
+            $scope.logs = [];
+            DockerApi.logsContainer(container.Id)
+                .success(function (response) {
+                    $scope.logs = response.split("\n");
+                })
+                .error(function () {
+                    alertService.add('danger', 'Cant open container log');
+                });
+        };
+
 
         //Vagrant geekyOS install
 
