@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "main": "app/login.html",
   "window": {
-    "toolbar": false,
+    "toolbar": true,
     "frame" : true,
     "width": 1024,
-    "height": 800
+    "height": 540
   },
   "dependencies": {
     "request": "~2.47.0",
