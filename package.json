@@ -1,9 +1,9 @@
 {
-  "name": "GeekyOS",
+  "name": "ClientApp",
   "version": "0.0.1",
-  "main": "app/index.html",
+  "main": "app/login.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "frame" : true,
     "width": 1024,
     "height": 800

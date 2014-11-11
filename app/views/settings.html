@@ -1,0 +1,53 @@
+<h3 class="page-title">
+    {{ 'Settings' | translate }}
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/" translate>Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <span translate>Settings</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form role="form" ng-submit="save(true)">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-note font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase">{{'Settings'|translate}}</span>
+                    </div>
+                    <div class="actions btn-set">
+                        <button type="submit" class="btn green-haze btn-circle">
+                            <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
+                        </button>
+
+                        <!--<support-lang></support-lang>-->
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div cg-busy="myPromise"></div>
+                    <div class="form-body">
+                        <div class="form-group" ng-repeat="setting in settings">
+                            <label>{{setting.label}}</label>
+
+                            <div class="input-icon">
+                                <i ng-show="setting.icon" ng-class="getSettingClass(setting.icon)"></i>
+                                <input type="text" placeholder="{{setting.label|translate}}"
+                                       class="form-control input-circle"
+                                       ng-model="setting.value">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

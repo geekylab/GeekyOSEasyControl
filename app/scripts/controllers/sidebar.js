@@ -44,6 +44,11 @@ angular.module('clientApp')
                 name: "Extensions",
                 href: "/extensions",
                 icon: "icon-home"
+            },
+            {
+                name: "Settings",
+                href: "/settings",
+                icon: "icon-home"
             }
         ];
 

@@ -80,6 +80,10 @@ angular
                 templateUrl: 'views/storeedit.html',
                 controller: 'StoreeditCtrl'
             })
+            .when('/settings', {
+                templateUrl: 'views/settings.html',
+                controller: 'SettingsCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -110,3 +114,5 @@ angular
         //}]);
 
     });
+
+var loginApp = angular.module('loginApp', []);

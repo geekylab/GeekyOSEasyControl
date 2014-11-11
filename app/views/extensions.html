@@ -90,7 +90,9 @@
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="container in containers">
-                                        <td>{{container.Names}}</td>
+                                        <td>
+                                            <p ng-repeat="name in container.Names">{{name}}</p>
+                                        </td>
                                         <td>
                                             <div class="actions btn-set">
                                                 <button type="button" name="start"
