@@ -4,13 +4,14 @@
   "main": "app/login.html",
   "window": {
     "toolbar": true,
-    "frame" : true,
+    "frame": true,
     "width": 1024,
     "height": 540
   },
   "dependencies": {
     "request": "~2.47.0",
-    "unzip": "~0.1.11"
+    "unzip": "~0.1.11",
+    "method-override": "~2.3.0"
   },
   "devDependencies": {
     "grunt": "^0.4.1",

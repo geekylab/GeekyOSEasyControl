@@ -97,10 +97,12 @@ angular.module('loginApp')
         };
 
         $scope.fbLogin = function () {
-            var url = 'http://GEEKY_MENU_CLOUD_APP/connect/facebook';
+            var url = 'http://menu.geekylab.net:8080/auth/connect/facebook';
             var new_win = gui.Window.get(
                 window.open(url)
             );
+
+            console.log(new_win);
 
 
             //var url = Settings.API_HOST + '/connect/facebook';

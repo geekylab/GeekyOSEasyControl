@@ -29,39 +29,39 @@ angular
     .config(function ($routeProvider, $translateProvider, $httpProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'views/main',
                 controller: 'MainCtrl'
             })
             .when('/extensions', {
-                templateUrl: 'views/extensions.html',
+                templateUrl: 'views/extensions',
                 controller: 'ExtensionsCtrl'
             })
             .when('/order', {
-                templateUrl: 'views/order.html',
+                templateUrl: 'views/order',
                 controller: 'OrderCtrl'
             })
             .when('/customer', {
-                templateUrl: 'views/customer.html',
+                templateUrl: 'views/customer',
                 controller: 'CustomerCtrl'
             })
             .when('/customer/:id', {
-                templateUrl: 'views/customeredit.html',
+                templateUrl: 'views/customeredit',
                 controller: 'CustomereditCtrl'
             })
             .when('/item', {
-                templateUrl: 'views/item.html',
+                templateUrl: 'views/item',
                 controller: 'ItemCtrl'
             })
             .when('/item/:id', {
-                templateUrl: 'views/itemedit.html',
+                templateUrl: 'views/itemedit',
                 controller: 'ItemeditCtrl'
             })
             .when('/category', {
-                templateUrl: 'views/category.html',
+                templateUrl: 'views/category',
                 controller: 'CategoryCtrl'
             })
             .when('/category/edit/:id', {
-                templateUrl: 'views/categoryedit.html',
+                templateUrl: 'views/categoryedit',
                 controller: 'CategoryeditCtrl'
             })
             //.when('/table', {
@@ -73,15 +73,15 @@ angular
             //    controller: 'TableeditCtrl'
             //})
             .when('/store', {
-                templateUrl: 'views/store.html',
+                templateUrl: 'views/store',
                 controller: 'StoreCtrl'
             })
             .when('/store/edit/:id', {
-                templateUrl: 'views/storeedit.html',
+                templateUrl: 'views/storeedit',
                 controller: 'StoreeditCtrl'
             })
             .when('/settings', {
-                templateUrl: 'views/settings.html',
+                templateUrl: 'views/settings',
                 controller: 'SettingsCtrl'
             })
             .otherwise({
