@@ -8,7 +8,19 @@
  * Controller of the clientApp
  */
 angular.module('loginApp')
-    .controller('LoginCtrl', function ($scope, $http, Settings) {
+    .controller('LoginCtrl', function ($scope, $http, Settings, $timeout) {
+
+        $scope.initialized = false;
+        $scope.initialize = function () {
+            var url = Settings.API_HOST + '/me';
+            $http.get(url)
+                .success(function (response, code) {
+                    $scope.initialized = true;
+                })
+                .error(function (resonse, code) {
+                    $scope.initialized = true;
+                });
+        };
 
         $scope.forms = {
             'loginForm': true,
@@ -54,12 +66,14 @@ angular.module('loginApp')
             var url = Settings.API_HOST + '/login';
             $scope.formErrorMessage = [];
             $http.post(url, $scope.loginFormInput)
-                .success(function (res) {
-                    location.href = 'index.html';
-                }).error(function (res, code) {
+                .success(function (data, status, headers, config) {
+                    console.log(data);
+                    console.log(headers);
+//                    location.href = 'index.html';
+                }).error(function (data, status, headers, config) {
                     console.log('error');
-                    if (code == 401) {
-                        angular.forEach(res.messages, function (msg) {
+                    if (status == 401) {
+                        angular.forEach(data.messages, function (msg) {
                             $scope.formErrorMessage.push(msg);
                         });
                     }
@@ -80,6 +94,22 @@ angular.module('loginApp')
                     });
                     console.log(res);
                 });
+        };
+
+        $scope.fbLogin = function () {
+            var url = 'http://GEEKY_MENU_CLOUD_APP/connect/facebook';
+            var new_win = gui.Window.get(
+                window.open(url)
+            );
+
+
+            //var url = Settings.API_HOST + '/connect/facebook';
+            //$http.get(url)
+            //    .success(function (data, status, headers, config) {
+            //        console.log(data);
+            //    }).error(function (data, status, headers, config) {
+            //
+            //    });
         };
 
     });
