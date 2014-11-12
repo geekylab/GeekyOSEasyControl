@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
     .factory('Items', function ($resource, Settings) {
-        var url = Settings.API_HOST + '/api/item/:id';
+        var url = Settings.LOCAL_API_HOST + '/api/item/:id';
         return $resource(url, {id: '@_id'}, {
             update: {
                 method: 'PUT',

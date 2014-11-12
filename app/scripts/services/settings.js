@@ -15,6 +15,7 @@ angular.module('clientApp')
             LOCAL_IMAGE_ZIP_NAME: 'GeekyOs.zip',
             LOCAL_VAGRANT_DIR_NAME: 'coreos-vagrant-master',
             API_HOST: 'http://menu.geekylab.net:8080',
+            LOCAL_API_HOST: 'http://127.0.0.1:3000',
             getUserHome: function () {
                 return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
             },

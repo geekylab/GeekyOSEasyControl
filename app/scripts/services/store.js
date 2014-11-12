@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
     .factory('Store', function ($resource, Settings) {
-        var url = Settings.API_HOST + '/api/store/:id/:lang';
+        var url = Settings.LOCAL_API_HOST + '/api/store/:id/:lang';
         return $resource(url, {
             id: '@_id',
             lang: '@lang'
