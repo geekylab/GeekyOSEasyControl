@@ -4,7 +4,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 .conn {
-  background: none repeat scroll 0 0 #44b6ae !important;
+  background: none repeat scroll 0 0 #35aa47 !important;
+}
+
+.conn a {
+  color: #000000 !important;
 }
 
 .grid {
@@ -292,11 +296,21 @@ AngularJS Basic Animations
   -webkit-animation: enter_sequence 1s linear; /* Safari/Chrome */
   animation: enter_sequence 1s linear; /* IE10+ and Future Browsers */
 }
+
 @-webkit-keyframes enter_sequence {
-  from { opacity:0; }
-  to { opacity:1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+
 @keyframes enter_sequence {
-  from { opacity:0; }
-  to { opacity:1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

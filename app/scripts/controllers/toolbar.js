@@ -8,34 +8,48 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('ToolbarCtrl', function ($scope, alertService, $rootScope, $http, $translate) {
+    .controller('ToolbarCtrl', function ($scope,
+                                         alertService,
+                                         $rootScope,
+                                         $http,
+                                         $translate,
+                                         socket,
+                                         User) {
+
+        console.log("ToolbarCtrl");
 
         //$scope.me = {};
         //$http.get('/api/me').success(function (data, status, headers, config) {
         //    $scope.me = data;
         //}).error(function (data, status, headers, config) {
         //});
+
+        $scope.connected = socket.socket.connected;
+
+        $rootScope.closeAlert = alertService.closeAlert;
+        //$scope.$watch('connected', function (newVal, oldVal) {
         //
-        ////$scope.connected = socket.socket.connected;
-        ////
-        ////$rootScope.closeAlert = alertService.closeAlert;
-        //////$scope.$watch('connected', function (newVal, oldVal) {
-        //////
-        //////});
-        ////
-        ////socket.on('connect', function () {
-        ////    $scope.connected = socket.socket.connected;
-        ////});
-        ////
-        ////socket.on('disconnect', function () {
-        ////    $scope.connected = socket.socket.connected;
-        ////});
-        //
-        //$scope.isConn = function () {
-        //    return {
-        //        'conn': $scope.connected
-        //    };
-        //};
+        //});
+
+        socket.on('connect', function () {
+            console.log('connect');
+            $scope.connected = socket.socket.connected;
+            socket.on('notice',
+                function () {
+                    console.log('notice');
+                });
+        });
+
+        socket.on('disconnect', function () {
+            $scope.connected = socket.socket.connected;
+        });
+
+
+        $scope.isConn = function () {
+            return {
+                'conn': $scope.connected
+            };
+        };
         //
         $scope.languages = {
             selected: {},
