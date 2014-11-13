@@ -144,7 +144,8 @@
                                 <td>{{plugin.name}} - {{plugin.version}}</td>
                                 <td>
                                     <div class="actions btn-set">
-                                        <a ng-href="http://127.0.0.1:3000{{plugin.routeName}}">test</a>
+                                        <a ng-click="executePlugin(btn)"
+                                           ng-repeat="btn in plugin.buttons">{{btn.label}}</a>
                                     </div>
                                 </td>
                             </tr>

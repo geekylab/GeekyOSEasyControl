@@ -329,4 +329,18 @@ angular.module('clientApp')
             .success(function (res) {
                 $scope.plugins = res;
             });
+
+        $scope.executePlugin = function (btn) {
+            var url = Settings.LOCAL_API_HOST + btn.link;
+            $http.get(url).
+                success(function (data, status, headers, config) {
+                    if (data.status) {
+                        alert(data.message);
+                    }
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("Sync Error");
+                });
+        };
+
     });
