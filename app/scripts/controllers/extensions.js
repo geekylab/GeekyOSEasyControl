@@ -321,7 +321,7 @@ angular.module('clientApp')
 
     })
     .controller('PluginsCtrl', function ($scope, $http, Settings) {
-        var url = Settings.API_HOST + '/plugins';
+        var url = Settings.LOCAL_API_HOST + '/plugins';
 
         $scope.plugins = [];
 
