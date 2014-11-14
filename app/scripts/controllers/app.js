@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('AppCtrl', function ($scope, User) {
+    .controller('AppCtrl', function ($scope, User, $cookies) {
         $scope.initialized = true;
 
         var userPromise = User.me();

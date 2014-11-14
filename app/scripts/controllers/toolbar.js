@@ -13,7 +13,7 @@ angular.module('clientApp')
                                          $rootScope,
                                          $http,
                                          $translate,
-                                         socket,
+//                                         socket,
                                          User) {
 
         console.log("ToolbarCtrl");
@@ -24,25 +24,25 @@ angular.module('clientApp')
         //}).error(function (data, status, headers, config) {
         //});
 
-        $scope.connected = socket.socket.connected;
+//        $scope.connected = socket.socket.connected;
 
         $rootScope.closeAlert = alertService.closeAlert;
         //$scope.$watch('connected', function (newVal, oldVal) {
         //
         //});
 
-        socket.on('connect', function () {
-            console.log('connect');
-            $scope.connected = socket.socket.connected;
-            socket.on('notice',
-                function () {
-                    console.log('notice');
-                });
-        });
-
-        socket.on('disconnect', function () {
-            $scope.connected = socket.socket.connected;
-        });
+        //socket.on('connect', function () {
+        //    console.log('connect');
+        //    $scope.connected = socket.socket.connected;
+        //    socket.on('notice',
+        //        function () {
+        //            console.log('notice');
+        //        });
+        //});
+        //
+        //socket.on('disconnect', function () {
+        //    $scope.connected = socket.socket.connected;
+        //});
 
 
         $scope.isConn = function () {

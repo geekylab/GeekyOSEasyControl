@@ -11,7 +11,8 @@
   "dependencies": {
     "request": "~2.47.0",
     "unzip": "~0.1.11",
-    "method-override": "~2.3.0"
+    "method-override": "~2.3.0",
+    "crypto": "0.0.3"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
