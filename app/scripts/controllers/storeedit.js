@@ -11,12 +11,15 @@ angular.module('clientApp')
     .controller('StoreeditCtrl', function ($scope,
                                            $routeParams,
                                            Store,
+                                           CurrentStore,
                                            constAllCountries,
                                            alertService,
                                            $location,
                                            FileUploader,
                                            $translate,
+                                           $timeout,
                                            constFacility) {
+
 
         var uploader = $scope.uploader = new FileUploader(
             {url: '/api/upload'}
@@ -58,16 +61,7 @@ angular.module('clientApp')
             }
         };
 
-        if ($routeParams.id != -1) {
-            $scope.myPromise = $scope.store = Store.get(
-                {id: $routeParams.id},
-                function (data) {
-                    $scope.tableGridOptions.data = $scope.store.tables;
-                }
-            );
-        } else {
-            $scope.store = new Store();
-        }
+        $scope.store = CurrentStore;
 
         $scope.changeLang = function (lang) {
             $scope.myPromise = $scope.store = Store.get(
@@ -84,7 +78,7 @@ angular.module('clientApp')
                 if (!continueFlg) {
                     $location.path("/store");
                 } else {
-                    $location.path("/store/edit/" + $scope.store._id);
+                    $location.path("/store");
                 }
 
                 $scope.tableGridOptions.data = $scope.store.tables;

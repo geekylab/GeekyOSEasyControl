@@ -26,7 +26,8 @@ angular
         'angularFileUpload',
         'cgBusy'
     ])
-    .config(function ($routeProvider, $translateProvider, $httpProvider) {
+    .config(function ($routeProvider, $translateProvider, $httpProvider, $locationProvider) {
+
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main',
@@ -64,21 +65,18 @@ angular
                 templateUrl: 'views/categoryedit',
                 controller: 'CategoryeditCtrl'
             })
-            //.when('/table', {
-            //    templateUrl: 'views/table.html',
-            //    controller: 'TableCtrl'
-            //})
-            //.when('/table/edit/:id', {
-            //    templateUrl: 'views/tableedit.html',
-            //    controller: 'TableeditCtrl'
+            //.when('/store', {
+            //    templateUrl: 'views/store',
+            //    controller: 'StoreCtrl'
             //})
             .when('/store', {
-                templateUrl: 'views/store',
-                controller: 'StoreCtrl'
-            })
-            .when('/store/edit/:id', {
                 templateUrl: 'views/storeedit',
-                controller: 'StoreeditCtrl'
+                controller: 'StoreeditCtrl',
+                resolve: {
+                    'CurrentStore': function (Store) {
+                        return Store.get();
+                    }
+                }
             })
             .when('/settings', {
                 templateUrl: 'views/settings',
@@ -112,6 +110,10 @@ angular
         //        );
         //    };
         //}]);
+
+        //$locationProvider.html5Mode({
+        //    enabled: true
+        //});
 
     });
 

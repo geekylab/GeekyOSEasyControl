@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 .conn {
@@ -313,4 +313,11 @@ AngularJS Basic Animations
   to {
     opacity: 1;
   }
+}
+
+/**
+UI Bootstrap
+**/
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
 }

@@ -19,6 +19,9 @@ angular.module('clientApp')
                 params: {
                     id: "@_id"
                 }
+            },
+            get: {
+                isArray: false
             }
         });
     });

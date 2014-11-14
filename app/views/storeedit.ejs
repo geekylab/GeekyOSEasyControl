@@ -50,7 +50,7 @@
 <div class="form-body">
 <div class="tabbable">
 <tabset>
-<tab heading="{{'General'|translate}}">
+<tab heading="{{'General'|translate}}" active="true">
     <div class="form-body">
         <div class="form-group" ng-class="{'has-error':form.store_name.$invalid}">
             <label>{{'Store Name'|translate}} <i class="fa fa-language" title="{{'Support translation'|translate}}"></i></label>
@@ -356,7 +356,7 @@
         </tbody>
     </table>
 </tab>
-<tab heading="{{'Tables'|translate}}">
+<tab heading="Tables">
     <div class="portlet">
         <div class="portlet-title">
             <div class="caption">
@@ -371,7 +371,7 @@
         <div class="portlet-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div ui-grid="tableGridOptions" style="height: 350px;" external-scopes="tableGridScope"
+                    <div ui-grid="tableGridOptions hide-display" style="height: 350px;" external-scopes="tableGridScope"
                          ui-grid-auto-resize ui-grid-edit></div>
                 </div>
             </div>
