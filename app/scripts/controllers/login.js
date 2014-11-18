@@ -63,15 +63,15 @@ angular.module('loginApp')
 
 
         $scope.login = function () {
-            var url = Settings.API_HOST + '/login';
+            var url = Settings.LOCAL_API_HOST + '/login';
+            console.log(url, "login");
             $scope.formErrorMessage = [];
             $http.post(url, $scope.loginFormInput)
                 .success(function (data, status, headers, config) {
-                    console.log(data);
-                    console.log(headers);
-//                    location.href = 'index.html';
+                    if (data.status) {
+                        location.href = '/app/index';
+                    }
                 }).error(function (data, status, headers, config) {
-                    console.log('error');
                     if (status == 401) {
                         angular.forEach(data.messages, function (msg) {
                             $scope.formErrorMessage.push(msg);
@@ -82,11 +82,11 @@ angular.module('loginApp')
         };
 
         $scope.registerForm = function () {
-            var url = Settings.API_HOST + '/signup';
+            var url = Settings.API_HOST + '/auth/signup';
             $scope.formErrorMessage = [];
             $http.post(url, $scope.registerFormInput)
                 .success(function (res) {
-                    location.href = 'index.html';
+                    location.href = '/app/login';
                 }).error(function (res, code) {
                     console.log('error');
                     angular.forEach(res.messages, function (msg) {
