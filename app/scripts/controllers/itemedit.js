@@ -16,7 +16,6 @@ angular.module('clientApp')
                                           FileUploader,
                                           $translate,
                                           Categories,
-                                          Store,
                                           $modal,
                                           $log,
                                           Settings) {
@@ -27,7 +26,6 @@ angular.module('clientApp')
 
         $scope.item = {};
         $scope.categories = Categories.query();
-        //$scope.stores = Store.query();
         $scope.myPromise = {};
 
 

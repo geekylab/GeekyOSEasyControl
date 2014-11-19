@@ -278,24 +278,6 @@
         </div>
     </div>
 </tab>
-<tab heading="{{'Stores'|translate}}">
-    <div class="form-group">
-        <label>{{'Stores'|translate}}</label>
-
-        <div class="form-control height-auto">
-            <div class="scroller" style="height:275px;" data-always-visible="1">
-                <div class="checkbox-list">
-                    <label style="margin-left: 20px;" ng-repeat="store in stores">
-                        <input type="checkbox"
-                               ng-checked="item.stores.indexOf(store._id) > -1"
-                               ng-click="storeToggleCheck(item._id,store._id)">
-                        <span grid-multi-lang-field="{{store.store_name}}"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-</tab>
 </tabset>
 </div>
 </div>
