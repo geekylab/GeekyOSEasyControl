@@ -18,11 +18,12 @@ angular.module('clientApp')
                                            FileUploader,
                                            $translate,
                                            $timeout,
-                                           constFacility) {
+                                           constFacility,
+                                           Settings) {
 
 
         var uploader = $scope.uploader = new FileUploader(
-            {url: '/api/upload'}
+            {url: Settings.LOCAL_API_HOST + '/api/upload'}
         );
 
         uploader.filters.push({
@@ -40,11 +41,7 @@ angular.module('clientApp')
             var filename = {};
             desc[$scope.supportLang.selected.code] = '';
             filename[$scope.supportLang.selected.code] = response.filename;
-            $scope.store.images.push({
-                path: response.path,
-                filename: filename,
-                desc: desc
-            });
+            $scope.store.images.push(response._id);
             fileItem.remove();
         };
 
@@ -155,6 +152,10 @@ angular.module('clientApp')
             else {
                 $scope.store.opts.splice(idx, 1);
             }
+        };
+
+        $scope.getImagePath = function (img) {
+            return Settings.LOCAL_API_HOST + '/api/image/' + img;
         };
 
         /**

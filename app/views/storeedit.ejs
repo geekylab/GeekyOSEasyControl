@@ -38,7 +38,8 @@
             <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
         </button>
 
-        <button type="button" class="btn red btn-circle" ng-click="delete()" ng-disabled="!store._id || store._id == -1">
+        <button type="button" class="btn red btn-circle" ng-click="delete()"
+                ng-disabled="!store._id || store._id == -1">
             <i class="fa fa-trash"></i> {{'Delete'|translate}}
         </button>
 
@@ -54,6 +55,7 @@
     <div class="form-body">
         <div class="form-group" ng-class="{'has-error':form.store_name.$invalid}">
             <label>{{'Store Name'|translate}} <i class="fa fa-language" title="{{'Support translation'|translate}}"></i></label>
+
             <div class="input-icon">
                 <i class="fa fa-info-circle"></i>
                 <input type="text" placeholder="{{'Store Name'|translate}}"
@@ -335,9 +337,9 @@
         <tbody>
         <tr ng-animate="'animate'" ng-repeat="img in store.images">
             <td>
-                <a href="javascript:;" ng-href="{{img.path}}" class="fancybox-button"
+                <a href="javascript:;" ng-href="javascript:;" class="fancybox-button"
                    data-rel="fancybox-button">
-                    <img class="img-responsive" ng-src="{{img.path}}" alt="">
+                    <img class="img-responsive" ng-src="{{getImagePath(img)}}" alt="">
                 </a>
             </td>
             <td>
