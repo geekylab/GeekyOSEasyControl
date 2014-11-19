@@ -373,8 +373,28 @@
         <div class="portlet-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div ui-grid="tableGridOptions hide-display" style="height: 350px;" external-scopes="tableGridScope"
-                         ui-grid-auto-resize ui-grid-edit></div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <th>Table Number</th>
+                        <th>Limited Number</th>
+                        <th>Table Status</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="table in store.tables">
+                            <td><input type="text" class="form-control" ng-model="table.table_number"></td>
+                            <td><input type="text" class="form-control" ng-model="table.limited_number"></td>
+                            <td>
+                                <select ng-model="table.table_status" class="form-control">
+                                    <option ng-repeat="(key, value) in allTableStatus"
+                                            value="{{key}}"
+                                            ng-selected="key == table.table_status"
+                                            >{{value}}
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -78,7 +78,7 @@ angular.module('clientApp')
                     $location.path("/store");
                 }
 
-                $scope.tableGridOptions.data = $scope.store.tables;
+                //$scope.tableGridOptions.data = $scope.store.tables;
             }
 
             function failure(response) {
@@ -114,6 +114,19 @@ angular.module('clientApp')
                 if (window.confirm($translate.instant('Remove?')))
                     $scope.myPromise = $scope.store.$delete(success, failure);
             }
+        };
+
+        navigator.geolocation = {};
+        navigator.geolocation.getCurrentPosition = function(callback) {
+            $.get('https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true', function(data) {
+                var position = {
+                    coords : {
+                        latitude : data.location.lat,
+                        longitude : data.location.lng
+                    }
+                };
+                callback(position);
+            });
         };
 
         $scope.getLocation = function () {
@@ -159,8 +172,13 @@ angular.module('clientApp')
         };
 
         /**
-         * Table grid
+         * Tables
          */
+
+        $scope.allTableStatus = [];
+        $scope.allTableStatus[0] = $translate.instant('vacated');
+        $scope.allTableStatus[1] = $translate.instant('busy');
+
 
         $scope.addRow = function () {
             $scope.store.tables.push({
@@ -168,49 +186,6 @@ angular.module('clientApp')
                 'limited_number': 4,
                 'table_status': 0
             });
-        };
-
-        $scope.tableGridScope = {
-            deleteRow: function (col, row, index) {
-                if (window.confirm($translate.instant('Delete?'))) {
-                    var idx = $scope.store.tables.indexOf(row.entity);
-                    $scope.store.tables.splice(idx, 1);
-                }
-            }
-        };
-
-        $scope.tableGridOptions = {
-            enableSorting: true,
-            enableFiltering: true,
-            columnDefs: [
-                {
-                    field: 'table_number',
-                    enableCellEdit: true
-                },
-                {
-                    field: 'table_status',
-                    name: 'table_status',
-                    displayName: 'Table',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownValueLabel: 'status',
-                    cellFilter: 'mapGender',
-                    editDropdownOptionsArray: [
-                        {id: 0, status: $translate.instant('vacated')},
-                        {id: 1, status: $translate.instant('busy')}
-                    ]
-                },
-
-                {
-                    field: 'limited_number'
-                },
-                {
-                    field: 'Action',
-                    cellTemplate: '<button class="btn btn-xs red" type="button" ng-click="getExternalScopes().deleteRow(col,row,$index)"><i class="fa fa-times"></i> Delete</button>',
-                    enableFiltering: false,
-                    enableSorting: false,
-                    enableCellEdit: false
-                }
-            ]
         };
 
     }).filter('mapGender', function ($translate) {
