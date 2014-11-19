@@ -116,6 +116,7 @@ angular.module('clientApp')
             }
         };
 
+        //https://github.com/rogerwang/node-webkit/issues/236
         navigator.geolocation = {};
         navigator.geolocation.getCurrentPosition = function(callback) {
             $.get('https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true', function(data) {
