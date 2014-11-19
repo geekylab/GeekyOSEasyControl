@@ -19,7 +19,8 @@ angular.module('clientApp')
                                            $translate,
                                            $timeout,
                                            constFacility,
-                                           Settings) {
+                                           Settings,
+                                           $http) {
 
 
         var uploader = $scope.uploader = new FileUploader(
@@ -118,12 +119,12 @@ angular.module('clientApp')
 
         //https://github.com/rogerwang/node-webkit/issues/236
         navigator.geolocation = {};
-        navigator.geolocation.getCurrentPosition = function(callback) {
-            $.get('https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true', function(data) {
+        navigator.geolocation.getCurrentPosition = function (callback) {
+            $.get('https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true', function (data) {
                 var position = {
-                    coords : {
-                        latitude : data.location.lat,
-                        longitude : data.location.lng
+                    coords: {
+                        latitude: data.location.lat,
+                        longitude: data.location.lng
                     }
                 };
                 callback(position);
@@ -147,7 +148,6 @@ angular.module('clientApp')
             }
         };
 
-
         $scope.checkCheckbox = function (option) {
             if ($scope.store.opts == undefined)
                 return false;
@@ -170,6 +170,15 @@ angular.module('clientApp')
 
         $scope.getImagePath = function (img) {
             return Settings.LOCAL_API_HOST + '/api/image/' + img;
+        };
+
+        $scope.syncStore = function () {
+            $scope.myPromise = $http.post(Settings.LOCAL_API_HOST + '/api/sync/store/' + $scope.store._id, {store: $scope.store})
+                .success(function () {
+                    console.log('ok');
+                }).error(function () {
+                    alert('error to sync');
+                });
         };
 
         /**

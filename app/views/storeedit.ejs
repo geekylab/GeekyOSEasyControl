@@ -24,7 +24,6 @@
     <div class="caption">
         <i class="icon-note font-green-sharp"></i>
         <span class="caption-subject font-green-sharp bold uppercase">{{'Store view'|translate}}</span>
-
     </div>
 
     <div class="actions btn-set">
@@ -36,6 +35,10 @@
         </button>
         <button type="submit" ng-disabled="form.$invalid" class="btn green-haze btn-circle">
             <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
+        </button>
+
+        <button type="button" class="btn green-haze btn-circle" ng-click="syncStore()" ng-disabled="store.syncFlg">
+            <i class="fa fa-check-circle"></i> {{'Sync with Cloud'|translate}}
         </button>
 
         <button type="button" class="btn red btn-circle" ng-click="delete()"
