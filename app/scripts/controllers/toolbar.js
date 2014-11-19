@@ -13,10 +13,9 @@ angular.module('clientApp')
                                          $rootScope,
                                          $http,
                                          $translate,
-                                         socket,
-                                         User) {
-
-        console.log("ToolbarCtrl");
+                                         socket
+                                         //                                 User
+        ) {
 
         //$scope.me = {};
         //$http.get('/api/me').success(function (data, status, headers, config) {

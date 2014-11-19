@@ -18,28 +18,18 @@ angular.module('clientApp')
                                           Categories,
                                           Store,
                                           $modal,
-                                          $log) {
+                                          $log,
+                                          Settings) {
 
         var uploader = $scope.uploader = new FileUploader(
-            {url: '/api/upload'}
+            {url: Settings.LOCAL_API_HOST + '/api/upload'}
         );
 
         $scope.item = {};
         $scope.categories = Categories.query();
-        $scope.stores = Store.query();
+        //$scope.stores = Store.query();
         $scope.myPromise = {};
 
-        //ingredient table
-        $scope.ingredientGridOptions = {
-            enableSorting: true,
-            enableFiltering: true,
-            columnDefs: [
-                {
-                    field: 'text',
-                    cellTemplate: '<div class="ui-grid-cell-contents" grid-multi-lang-field="{{row.entity.text}}"></div>'
-                }
-            ]
-        };
 
         uploader.onCompleteItem = function (fileItem, response, status, headers) {
             if ($scope.item.images == undefined)
@@ -48,8 +38,10 @@ angular.module('clientApp')
             var filename = {};
             filename[$scope.supportLang.selected.code] = response.filename;
             $scope.item.images.push({
-                path: response.path,
-                filename: filename
+                _id: response._id,
+                filename: filename,
+                sort_order: 0,
+                image_type: 1
             });
             fileItem.remove();
         };
@@ -66,36 +58,29 @@ angular.module('clientApp')
             $scope.myPromise = $scope.item = Items.get({id: $routeParams.id}, function (item) {
                 if ($scope.item.images === undefined)
                     $scope.item.images = [];
-
                 if ($scope.item.ingredients === undefined)
                     $scope.item.ingredients = [];
-
                 console.log($scope.item.ingredients);
-
-                $scope.ingredientGridOptions.data = $scope.item.ingredients;
             });
         } else {
             $scope.item = new Items();
             $scope.item.images = [];
             $scope.item.ingredients = [];
             $scope.item.stores = [];
-            $scope.ingredientGridOptions.data = $scope.item.ingredients;
         }
 
 
         $scope.save = function (continueFlg) {
             function success(response) {
                 alertService.add('success', '保存した');
-                console.log("success", response);
                 if (!continueFlg) {
-                    $location.path("/item");
+                    return $location.path("/item");
                 } else {
-                    $location.path("/item/" + $scope.item._id);
+                    return $location.path("/item/" + $scope.item._id);
                 }
             }
 
             function failure(response) {
-                alert('error');
                 console.log(response);
             }
 
@@ -127,6 +112,10 @@ angular.module('clientApp')
             if (window.confirm($translate.instant('Remove?'))) {
                 $scope.item.images.splice(index, 1);
             }
+        };
+
+        $scope.getImagePath = function (imageId) {
+            return Settings.LOCAL_API_HOST + '/api/image/' + imageId;
         };
 
         $scope.categoryToggleCheck = function (itemId, categoryId) {
@@ -174,12 +163,11 @@ angular.module('clientApp')
             });
 
             modalInstance.result.then(function (selectedItem) {
+                console.log($scope.item.ingredients);
                 angular.copy(selectedItem, $scope.item.ingredients);
-                $scope.ingredientGridOptions.data = $scope.item.ingredients;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
-
         }
 
     }).controller('ModalIngredientsCtrl', function ($scope,

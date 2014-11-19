@@ -46,7 +46,7 @@
                 </li>
                 <li ng-class="{'disabled':!item._id || item._id == -1}">
                     <a href="javascript:;" ng-click="delete()"><span
-                            class="label label-danger">{{'Delete'|translate}}</span></a>
+                                class="label label-danger">{{'Delete'|translate}}</span></a>
                 </li>
             </ul>
         </div>
@@ -137,11 +137,11 @@
             </td>
             <td class="text-center">
                 <span ng-show="img.isSuccess"><i
-                        class="glyphicon glyphicon-ok"></i></span>
+                            class="glyphicon glyphicon-ok"></i></span>
                 <span ng-show="img.isCancel"><i
-                        class="glyphicon glyphicon-ban-circle"></i></span>
+                            class="glyphicon glyphicon-ban-circle"></i></span>
                 <span ng-show="img.isError"><i
-                        class="glyphicon glyphicon-remove"></i></span>
+                            class="glyphicon glyphicon-remove"></i></span>
             </td>
             <td nowrap>
                 <button type="button" class="btn btn-success btn-xs"
@@ -191,9 +191,9 @@
         <tbody>
         <tr ng-animate="'animate'" ng-repeat="img in item.images">
             <td>
-                <a href="javascript:;" ng-href="{{img.path}}" class="fancybox-button"
+                <a href="javascript:;" class="fancybox-button"
                    data-rel="fancybox-button">
-                    <img class="img-responsive" ng-src="{{img.path}}" alt="">
+                    <img class="img-responsive" ng-src="{{getImagePath(img._id)}}" alt="">
                 </a>
             </td>
             <td>
@@ -242,7 +242,19 @@
         <div class="portlet-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div ui-grid="ingredientGridOptions hide-display" style="height: 350px;" ui-grid-auto-resize></div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <th>Name</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="ingredient in item.ingredients">
+                            <td>
+                                <p ng-repeat="label in ingredient.text">{{label}}</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--<div ui-grid="ingredientGridOptions hide-display" style="height: 350px;" ui-grid-auto-resize></div>-->
                 </div>
             </div>
         </div>
@@ -322,7 +334,7 @@
                         This ingredient ({{query}}) was not found.
                     </h3>
                     <button class="btn btn-success" type="button" ng-click="createNewIngredient()"><i
-                            class="fa fa-plus"></i> create a new ingredient ({{query}})
+                                class="fa fa-plus"></i> create a new ingredient ({{query}})
                     </button>
                 </div>
 
@@ -336,7 +348,7 @@
                                 </div>
                                 <div class="actions">
                                     <button class="btn btn-circle btn-success"><i
-                                            class="fa fa-check"></i> Save And Select
+                                                class="fa fa-check"></i> Save And Select
                                     </button>
                                 </div>
                             </div>

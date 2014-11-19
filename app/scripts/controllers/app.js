@@ -11,15 +11,15 @@ angular.module('clientApp')
     .controller('AppCtrl', function ($scope, User, $cookies) {
         $scope.initialized = true;
 
-        var userPromise = User.me();
-
-        userPromise.then(function (data) {
-            console.log(data);
-        }, function (reason) {
-            console.log(reason);
-        }, function (update) {
-            console.log('Got notification: ' + update);
-        });
+        //var userPromise = User.me();
+        //
+        //userPromise.then(function (data) {
+        //    console.log(data);
+        //}, function (reason) {
+        //    console.log(reason);
+        //}, function (update) {
+        //    console.log('Got notification: ' + update);
+        //});
 
 
         //$http.get(Settings.API_HOST + '/app/me')
