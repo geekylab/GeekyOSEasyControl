@@ -27,24 +27,25 @@
     </div>
 
     <div class="actions btn-set">
-        <a ng-href="#/store" type="button" name="back" class="btn btn-default btn-circle">
-            <i class="fa fa-angle-left"></i> {{'Back'|translate}}
-        </a>
-        <button type="button" ng-disabled="form.$invalid" class="btn green-haze btn-circle" ng-click="save(false)">
-            <i class="fa fa-check"></i> {{'Save'|translate}}
-        </button>
+        <!--<a ng-href="#/store" type="button" name="back" class="btn btn-default btn-circle">-->
+            <!--<i class="fa fa-angle-left"></i> {{'Back'|translate}}-->
+        <!--</a>-->
+        <!--<button type="button" ng-disabled="form.$invalid" class="btn green-haze btn-circle" ng-click="save(false)">-->
+            <!--<i class="fa fa-check"></i> {{'Save'|translate}}-->
+        <!--</button>-->
         <button type="submit" ng-disabled="form.$invalid" class="btn green-haze btn-circle">
             <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
         </button>
 
-        <button type="button" class="btn green-haze btn-circle" ng-click="syncStore()" ng-disabled="store.syncFlg">
-            <i class="fa fa-check-circle"></i> {{'Sync with Cloud'|translate}}
+        <button type="button" class="btn yellow-casablanca btn-circle" ng-click="syncStore()"
+                ng-disabled="!store._id || store.syncFlg">
+            <i class="fa fa-cloud-upload"></i> {{'Sync with Cloud'|translate}}
         </button>
 
-        <button type="button" class="btn red btn-circle" ng-click="delete()"
-                ng-disabled="!store._id || store._id == -1">
-            <i class="fa fa-trash"></i> {{'Delete'|translate}}
-        </button>
+        <!--<button type="button" class="btn red btn-circle" ng-click="delete()"-->
+                <!--ng-disabled="!store._id || store._id == -1">-->
+            <!--<i class="fa fa-trash"></i> {{'Delete'|translate}}-->
+        <!--</button>-->
 
         <support-lang></support-lang>
     </div>

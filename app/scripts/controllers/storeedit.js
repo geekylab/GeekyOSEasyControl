@@ -73,11 +73,7 @@ angular.module('clientApp')
         $scope.save = function (continueFlg) {
             function success(response) {
                 alertService.add('success', '保存した');
-                if (!continueFlg) {
-                    $location.path("/store");
-                } else {
-                    $location.path("/store");
-                }
+                $location.path("/store");
 
                 //$scope.tableGridOptions.data = $scope.store.tables;
             }
@@ -175,7 +171,7 @@ angular.module('clientApp')
         $scope.syncStore = function () {
             $scope.myPromise = $http.post(Settings.LOCAL_API_HOST + '/api/sync/store/' + $scope.store._id, {store: $scope.store})
                 .success(function () {
-                    console.log('ok');
+                    $scope.store.syncFlg = true;
                 }).error(function () {
                     alert('error to sync');
                 });
