@@ -18,6 +18,7 @@ angular.module('clientApp')
                                           Categories,
                                           $modal,
                                           $log,
+                                          $http,
                                           Settings) {
 
         var uploader = $scope.uploader = new FileUploader(
@@ -143,6 +144,15 @@ angular.module('clientApp')
                 $scope.item.stores.splice(idx, 1);
             }
 
+        };
+
+        $scope.syncItem = function () {
+            $scope.myPromise = $http.post(Settings.LOCAL_API_HOST + '/api/sync/item/' + $scope.item._id, {item: $scope.item})
+                .success(function () {
+                    $scope.item.syncFlg = true;
+                }).error(function () {
+                    alert('error to sync');
+                });
         };
 
         $scope.addIngredient = function () {

@@ -187,6 +187,8 @@ angular.module('clientApp')
 
 
         $scope.addRow = function () {
+            if (!$scope.store.tables)
+                $scope.store.tables = [];
             $scope.store.tables.push({
                 'table_number': 0,
                 'limited_number': 4,
