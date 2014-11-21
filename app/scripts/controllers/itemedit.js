@@ -37,7 +37,7 @@ angular.module('clientApp')
             var filename = {};
             filename[$scope.supportLang.selected.code] = response.filename;
             $scope.item.images.push({
-                _id: response._id,
+                image: response._id,
                 filename: filename,
                 sort_order: 0,
                 image_type: 1
@@ -59,7 +59,7 @@ angular.module('clientApp')
                     $scope.item.images = [];
                 if ($scope.item.ingredients === undefined)
                     $scope.item.ingredients = [];
-                console.log($scope.item.ingredients);
+                console.log($scope.item);
             });
         } else {
             $scope.item = new Items();
