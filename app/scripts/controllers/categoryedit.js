@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('CategoryeditCtrl', function ($scope, Categories, $routeParams, alertService, $location, $translate) {
+    .controller('CategoryeditCtrl', function ($scope, Categories, $routeParams, alertService, $location, $translate, $http, Settings) {
         $scope.category = {};
         if ($routeParams.id != -1) {
             $scope.myPromise = $scope.category = Categories.get({id: $routeParams.id});
@@ -44,6 +44,17 @@ angular.module('clientApp')
             } else {
                 $scope.myPromise = $scope.category.$save(success, failure);//Items.save($scope.category, success, failure);
             }
+        };
+
+        $scope.syncCategory = function () {
+            $scope.myPromise = $http.post(Settings.LOCAL_API_HOST + '/api/sync/category/' + $scope.category._id, {cateory: $scope.category})
+                .success(function () {
+                    $scope.category.syncFlg = true;
+                }).error(function (data) {
+                    console.log(data);
+                    alert('Johnathan');
+                });
+
         };
 
         $scope.delete = function () {

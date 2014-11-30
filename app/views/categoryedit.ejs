@@ -39,6 +39,12 @@
                             <i class="fa fa-check-circle"></i> {{'Save &amp; Continue Edit'|translate}}
                         </button>
 
+                        <button type="button" class="btn yellow-casablanca btn-circle" ng-click="syncCategory()"
+                                ng-disabled="!category._id || category.syncFlg">
+                            <i class="fa fa-cloud-upload"></i> {{'Sync with Cloud'|translate}}
+                        </button>
+
+
                         <div class="btn-group">
                             <a class="btn yellow btn-circle" href="javascript:;" data-toggle="dropdown">
                                 <i class="fa fa-share"></i> {{'More'|translate}} <i class="fa fa-angle-down"></i>

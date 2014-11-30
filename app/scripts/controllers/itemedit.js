@@ -150,8 +150,9 @@ angular.module('clientApp')
             $scope.myPromise = $http.post(Settings.LOCAL_API_HOST + '/api/sync/item/' + $scope.item._id, {item: $scope.item})
                 .success(function () {
                     $scope.item.syncFlg = true;
-                }).error(function () {
-                    alert('error to sync');
+                }).error(function (data) {
+                    var message = data.message || 'Has error';
+                    alert(message);
                 });
         };
 
