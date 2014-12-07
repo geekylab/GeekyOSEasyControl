@@ -17,12 +17,6 @@ angular.module('clientApp')
                                          //                                 User
         ) {
 
-        //$scope.me = {};
-        //$http.get('/api/me').success(function (data, status, headers, config) {
-        //    $scope.me = data;
-        //}).error(function (data, status, headers, config) {
-        //});
-
         $scope.connected = socket.socket.connected;
 
         $rootScope.closeAlert = alertService.closeAlert;
@@ -31,7 +25,6 @@ angular.module('clientApp')
         });
 
         socket.on('connect', function () {
-            console.log('connect');
             $scope.connected = socket.socket.connected;
             socket.on('notice',
                 function () {
@@ -49,7 +42,7 @@ angular.module('clientApp')
                 'conn': $scope.connected
             };
         };
-        //
+
         $scope.languages = {
             selected: {},
             lang: {
