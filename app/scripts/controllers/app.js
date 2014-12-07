@@ -8,27 +8,11 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('AppCtrl', function ($scope, User, $cookies) {
+    .controller('AppCtrl', function ($scope, socket) {
         $scope.initialized = true;
-
-        //var userPromise = User.me();
-        //
-        //userPromise.then(function (data) {
-        //    console.log(data);
-        //}, function (reason) {
-        //    console.log(reason);
-        //}, function (update) {
-        //    console.log('Got notification: ' + update);
-        //});
-
-
-        //$http.get(Settings.API_HOST + '/app/me')
-        //    .success(function (res) {
-        //        $timeout(function () {
-        //            $scope.initialized = true;
-        //        }, 3000);
-        //    })
-        //    .error(function () {
-        //        $scope.initialized = true;
-        //    });
+        socket.on("check_table_hash", function (data) {
+            if (data.customer.name.family_name && data.table_token) {
+                alert(data.customer.name.family_name + " : " + data.table_token);
+            }
+        });
     });
