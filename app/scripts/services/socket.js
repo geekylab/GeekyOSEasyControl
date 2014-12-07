@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
     .factory('socket', function ($rootScope) {
-        var socket = io.connect('127.0.0.1:3000');
+        var socket = io.connect('127.0.0.1:3000/admin');
         return {
             on: function (eventName, callback) {
                 socket.on(eventName, function () {
