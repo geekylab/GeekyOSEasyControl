@@ -15,11 +15,11 @@ angular.module('clientApp')
                 href: "/",
                 icon: "icon-home"
             },
-            //{
-            //    name: "Order",
-            //    href: "/order",
-            //    icon: "icon-basket"
-            //},
+            {
+                name: "Order",
+                href: "/order",
+                icon: "icon-basket"
+            },
             //{
             //    name: "Customer",
             //    href: "/customer",

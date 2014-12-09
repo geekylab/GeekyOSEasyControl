@@ -8,51 +8,22 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('OrderCtrl', function ($scope, Orders, uiGridConstants, $modal, Store, alertService) {
+    .controller('OrderCtrl', function ($scope, Tables, uiGridConstants, $modal, Store, alertService) {
         $scope.gridOptions = {
             enableSorting: true,
             enableFiltering: true,
             columnDefs: [
-                {field: 'order_number'},
-                {field: 'customers'},
-                {
-                    field: 'table_number', filters: [
-                    {
-                        condition: uiGridConstants.filter.GREATER_THAN,
-                        placeholder: 'greater than'
-                    },
-                    {
-                        condition: uiGridConstants.filter.LESS_THAN,
-                        placeholder: 'less than'
-                    }
-                ]
-                },
-                {
-                    field: 'store.store_name.us',
-                    enableSorting: false
-                },
-                {
-                    field: 'order_status'
-                },
-                {
-                    field: 'secret_number',
-                    enableSorting: false
-                },
-                {
-                    field: 'Action',
-                    cellTemplate: '<a class="btn btn-success" ng-href="/#/order/{{row.entity._id}}" >Edit</a>',
-                    enableFiltering: false,
-                    enableSorting: false
-                }
+                {field: 'table_number'},
+                {field: 'table_status'}
             ]
         };
 
-        $scope.entries = Orders.query(function (data) {
+        $scope.entries = Tables.query(function (data) {
             $scope.gridOptions.data = data;
         });
 
 
-        $scope.order = new Orders();
+        $scope.order = new Tables();
 
         $scope.createNewOrder = function () {
 
