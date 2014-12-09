@@ -233,6 +233,7 @@
 
             <div class="col-xs-6">
                 <label>{{'Latitude'|translate}}</label>
+
                 <div class="input-icon">
                     <i class="fa fa-location-arrow"></i>
                     <input type="text" placeholder="{{'Latitude'|translate}}"
@@ -370,6 +371,7 @@
                         <th>Table Number</th>
                         <th>Limited Number</th>
                         <th>Table Status</th>
+                        <th>Qr-code</th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="table in store.tables">
@@ -384,6 +386,11 @@
                                     </option>
                                 </select>
                             </td>
+                            <td>
+                                <img class="img-responsive" ng-src="{{getTableQrCode(table)}}" alt=""
+                                     ng-show="table._id">
+                            </td>
+
                         </tr>
                         </tbody>
                     </table>

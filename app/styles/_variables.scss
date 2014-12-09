@@ -21,7 +21,7 @@ $header-page-actions-margin: 17px 0 15px 15px;
 
 $header-top-menu-general-item-padding: 28px 16px 19px 16px !default;
 // adjust top menu general elements padding. default: 15px 10px 7px 10px
-$header-top-menu-general-item-padding-on-mobile: 28px 12px 19px 12px !default;
+$header-top-menu-general-item-padding-on-mobile: 28px 10px 19px 10px !default;
 // adjust top menu general elements padding mobile. default: 15px 10px 7px 10px
 
 $header-top-menu-user-item-padding: 24px 12px 24px 12px !default;
@@ -98,11 +98,11 @@ $page-content-solid-bg-color: #F1F3FA !default;
 $page-footer-height: 33px !default;
 
 // Z-index master list
-$zindex-header-fixed: 1005 !default;
-$zindex-header-static: 1005 !default;
-$zindex-quick-sidebar: 1004 !default;
-$zindex-quick-sidebar-full-height: 1006 !default;
-$zindex-sidebar-fixed: 1010 !default;
-$zindex-footer-fixed: 1010 !default;
-$zindex-sidebar-submenu: 1000 !default;
-$zindex-go-to-top: 1001 !default;
+$zindex-header-fixed: 9995 !default;
+$zindex-header-static: 9995 !default;
+$zindex-quick-sidebar: 9994 !default;
+$zindex-quick-sidebar-full-height: 9996 !default;
+$zindex-sidebar-fixed: 10000 !default;
+$zindex-footer-fixed: 10000 !default;
+$zindex-sidebar-submenu: 2000 !default;
+$zindex-go-to-top: 10001 !default;

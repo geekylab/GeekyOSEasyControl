@@ -60,6 +60,7 @@ angular.module('clientApp')
         };
 
         $scope.store = CurrentStore;
+        console.log("on start", $scope.store);
 
         $scope.changeLang = function (lang) {
             $scope.myPromise = $scope.store = Store.get(
@@ -73,17 +74,18 @@ angular.module('clientApp')
         $scope.save = function (continueFlg) {
             function success(response) {
                 alertService.add('success', '保存した');
-                $location.path("/store");
+//                $location.path("/store");
+                console.log("on success", $scope.store);
 
                 //$scope.tableGridOptions.data = $scope.store.tables;
             }
 
             function failure(response) {
-                alert('error');
                 console.log(response);
             }
 
             if ($scope.store._id) {
+                console.log("on save", $scope.store);
                 $scope.myPromise = $scope.store.$update(success, failure);
             } else {
                 $scope.myPromise = $scope.store.$save(success, failure);
@@ -166,6 +168,12 @@ angular.module('clientApp')
 
         $scope.getImagePath = function (img) {
             return Settings.LOCAL_API_HOST + '/api/image/' + img;
+        };
+
+        $scope.getTableQrCode = function (table) {
+            if (table._id) {
+                return Settings.LOCAL_API_HOST + '/api/table_qr/' + table._id;
+            }
         };
 
         $scope.syncStore = function () {
