@@ -99,11 +99,16 @@
     "Portuguese": "Portuguese",
 
     "Customer": "Customer",
-    "Log Out": "Log Out",
+    "Log Out": "Logout",
 
 
     "Please fill in only numbers.": "Please fill in only numbers.",
     "Required.": "Required.",
     "This is not a valid telephone.": "This is not a valid telephone."
+
+    "Accept" : "Accept",
+    "Ignore" : "Remove request",
+    "pending_count": "{{count}} pending"
+
 
 }

@@ -14,7 +14,8 @@ angular.module('clientApp')
             enableFiltering: true,
             columnDefs: [
                 {field: 'table_number'},
-                {field: 'table_status'}
+                {field: 'table_status'},
+                {field: 'orders'}
             ]
         };
 

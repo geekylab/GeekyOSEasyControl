@@ -1,7 +1,24 @@
 angular.module('clientApp')
     .directive('dropdownNotification', function ($window) {
         return {
-            replace:true,
+            controller: function ($scope) {
+                $scope.accept = function () {
+                    alert('accept');
+                };
+
+                $scope.ignore = function () {
+                    alert('ignore');
+                };
+
+                $scope.ignore = function () {
+                    alert('ignore');
+                };
+
+                $scope.showUserDetail = function () {
+                    alert('showUserDetail');
+                };
+            },
+            replace: true,
             scope: {
                 notifications: "="
             },

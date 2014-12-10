@@ -90,9 +90,11 @@ angular
             prefix: 'i18n/locale-',
             suffix: '.json'
         });
+
         $translateProvider.preferredLanguage('ja');
-        $translateProvider.fallbackLanguage('en');
-//        $translateProvider.useMissingTranslationHandlerLog();
+        $translateProvider.fallbackLanguage('ja');
+
+        $translateProvider.useMissingTranslationHandlerLog();
         $translateProvider.useLocalStorage();
 
         //$httpProvider.responseInterceptors.push(['$q', '$location', function ($q, $location) {

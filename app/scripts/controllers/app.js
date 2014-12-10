@@ -12,9 +12,14 @@ angular.module('clientApp')
         $scope.initialized = true;
         $scope.notifications = [];
         socket.on("check_table_hash", function (data) {
+            console.log(data);
             if (data.customer.name.family_name && data.table_token) {
 //                alert(data.customer.name.family_name + " : " + data.table_token);
                 $scope.notifications.push(data);
             }
         });
+
+
+
+
     });
