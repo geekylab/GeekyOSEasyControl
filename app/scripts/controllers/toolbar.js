@@ -14,7 +14,6 @@ angular.module('clientApp')
                                          $http,
                                          $translate,
                                          socket
-                                         //                                 User
         ) {
 
         $scope.connected = socket.socket.connected;

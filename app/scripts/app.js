@@ -49,6 +49,10 @@ angular
                 templateUrl: 'views/customeredit',
                 controller: 'CustomereditCtrl'
             })
+            .when('/customer-detail/:id', {
+                templateUrl: 'views/customer-detail',
+                controller: 'CustomerDetailCtrl'
+            })
             .when('/item', {
                 templateUrl: 'views/item',
                 controller: 'ItemCtrl'

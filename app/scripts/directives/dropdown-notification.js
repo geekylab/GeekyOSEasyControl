@@ -1,5 +1,5 @@
 angular.module('clientApp')
-    .directive('dropdownNotification', function ($window) {
+    .directive('dropdownNotification', function ($location) {
         return {
             controller: function ($scope) {
                 $scope.accept = function () {
@@ -10,12 +10,8 @@ angular.module('clientApp')
                     alert('ignore');
                 };
 
-                $scope.ignore = function () {
-                    alert('ignore');
-                };
-
-                $scope.showUserDetail = function () {
-                    alert('showUserDetail');
+                $scope.showUserDetail = function (notification) {
+                    $location.path("customer-detail/" + notification.customer.id);
                 };
             },
             replace: true,
