@@ -11,6 +11,12 @@ angular.module('clientApp')
     .controller('AppCtrl', function ($scope, socket) {
         $scope.initialized = true;
         $scope.notifications = [];
+
+        socket.on("neworder", function (data) {
+            console.log("neworder");
+        });
+
+
         socket.on("check_table_hash", function (data) {
 //            console.log(data);
             if (data.customer.name.family_name && data.table_token) {
