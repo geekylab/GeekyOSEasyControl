@@ -20,12 +20,12 @@
                                 </span>
                                 <span class="subject">
                                     <span class="from">{{notification.customer.name.given_name}} {{notification.customer.name.family_name}} </span>
-                                    <span class="time">{{notification.send_time | date:'short'}} </span>
-                                    <span class="badge badge-default">{{notification.orderObj.order.request_count}} </span>
+                                    <span class="time">{{notification.created | date:'short'}} </span>
+                                    <span class="badge badge-default">{{notification.request_count}} </span>
                                 </span>
                             </a>
                             <span class="message">
-                                {{"Table number" | translate}} : {{notification.table_number}}
+                                {{"Table number" | translate}} : {{notification.table.table_number}}
                             </span>
                         </div>
                         <div class="col-md-4 pull-right">

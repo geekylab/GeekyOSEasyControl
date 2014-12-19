@@ -8,39 +8,32 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('AppCtrl', function ($scope, socket) {
+    .controller('AppCtrl', function ($scope, socket, CheckInRequest) {
         $scope.initialized = true;
-        $scope.notifications = [];
+        $scope.notifications = CheckInRequest.query();
 
         socket.on("neworder", function (data) {
             console.log("neworder");
         });
 
 
-        socket.on("check_table_hash", function (data) {
-//            console.log(data);
-            if (data.customer.name.family_name && data.table_token) {
+        socket.on("request_check_in", function (checkInRequest) {
+            console.log("request_check_in", checkInRequest);
+            if (checkInRequest.customer.name) {
+                console.log("checkInRequest.customer.name", checkInRequest.customer.name);
                 if ($scope.notifications.length > 0) {
                     var idx = -1;
                     for (var i = 0; $scope.notifications.length > i; i++) {
                         var element = $scope.notifications[i];
-                        if (
-                            element.orderObj &&
-                            element.orderObj.order &&
-                            element.orderObj.order.order_token &&
-                            data.orderObj &&
-                            data.orderObj.order &&
-                            data.orderObj.order.order_token) {
-                            if (element.orderObj.order.order_token == data.orderObj.order.order_token) {
-                                idx = i;
-                            }
+                        if (element.customer._id == checkInRequest.customer._id) {
+                            idx = i;
                         }
                     }
 
                     if (idx === -1) {
-                        $scope.notifications.unshift(data);
+                        $scope.notifications.unshift(checkInRequest);
                     } else {
-                        $scope.notifications[idx].orderObj.order.request_count = data.orderObj.order.request_count;
+                        $scope.notifications[idx].request_count = checkInRequest.request_count;
                         if (idx > 0) {
                             var array = $scope.notifications.splice(idx, 1);
                             if (array) {
@@ -49,7 +42,7 @@ angular.module('clientApp')
                         }
                     }
                 } else {
-                    $scope.notifications.unshift(data);
+                    $scope.notifications.unshift(checkInRequest);
                 }
             }
         });

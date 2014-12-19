@@ -1,17 +1,37 @@
 angular.module('clientApp')
-    .directive('dropdownNotification', function ($location) {
+    .directive('dropdownNotification', function ($location, CheckInRequest, alertService) {
         return {
             controller: function ($scope) {
-                $scope.accept = function () {
-                    alert('accept');
+
+                var success = function(notification, response) {
+                    alertService.add('success', '保存した');
+                    var idx = $scope.notifications.indexOf(notification);
+                    if (idx != -1) {
+                        $scope.notifications.splice(idx,1);
+                    }
                 };
 
-                $scope.ignore = function () {
-                    alert('ignore');
+                var failure = function(response) {
+                    console.log(response);
+                };
+
+
+                $scope.accept = function (notification) {
+                    notification.status = 0;
+                    notification.$update(function(response) {
+                        success(notification, response);
+                    }, failure);
+                };
+
+                $scope.ignore = function (notification) {
+                    notification.status = -1;
+                    notification.$update(function(response){
+                        success(notification, response);
+                    }, failure);
                 };
 
                 $scope.showUserDetail = function (notification) {
-                    $location.path("customer-detail/" + notification.customer.id);
+                    $location.path("customer-detail/" + notification.customer._id);
                 };
             },
             replace: true,
