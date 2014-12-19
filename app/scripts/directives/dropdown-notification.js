@@ -13,21 +13,26 @@ angular.module('clientApp')
 
                 var failure = function(response) {
                     console.log(response);
+                    alert("error");
                 };
 
 
                 $scope.accept = function (notification) {
-                    notification.status = 0;
-                    notification.$update(function(response) {
-                        success(notification, response);
-                    }, failure);
+                    if (notification != undefined) {
+                        notification.status = 0;
+                        CheckInRequest.update({ id: notification._id }, notification, function(response){
+                            success(notification, response);
+                        }, failure);
+                    }
                 };
 
                 $scope.ignore = function (notification) {
-                    notification.status = -1;
-                    notification.$update(function(response){
-                        success(notification, response);
-                    }, failure);
+                    if (notification != undefined) {
+                        notification.status = -1;
+                        CheckInRequest.update({ id: notification._id }, notification, function(response){
+                            success(notification, response);
+                        }, failure);
+                    }
                 };
 
                 $scope.showUserDetail = function (notification) {
